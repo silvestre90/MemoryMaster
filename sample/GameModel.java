@@ -1,24 +1,20 @@
 package sample;
 
-import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
 
 public class GameModel {
 
-    imageButton button1, button2;
+    ImageButton button1, button2;
     GridPane root;
     Stage window;
 
@@ -47,7 +43,7 @@ public class GameModel {
 
         for (int i = 0; i < X_GRID_SIZE ; i++) {
             for(int j = 0; j<Y_GRID_SIZE; j++) {
-                imageButton button = new imageButton();
+                ImageButton button = new ImageButton();
 
                 button.setPrefHeight(100);
                 button.setPrefWidth(100);
@@ -88,7 +84,7 @@ public class GameModel {
         return root;
     }
 
-    private void checkIfCorrect(imageButton button1, imageButton button2){
+    private void checkIfCorrect(ImageButton button1, ImageButton button2){
 
 
 
@@ -101,8 +97,19 @@ public class GameModel {
 
             if(remainingFields == 0){
                 remainingFields = X_GRID_SIZE*Y_GRID_SIZE;
+
+                window.close();
                 try {
-                    gameController.restartGame(window);
+                    System.out.println("jestem tu");
+                    Parent root;
+                    root = (Parent) FXMLLoader.load(getClass().getResource("GameWonWindow.fxml"));
+                    Stage gameWonWindow = new Stage();
+                    Scene scenegameWon = new Scene(root);
+                    gameWonWindow.setScene(scenegameWon);
+                    gameWonWindow.setTitle("You won the game");
+                    gameWonWindow.show();
+
+//                    gameController.restartGame(window);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

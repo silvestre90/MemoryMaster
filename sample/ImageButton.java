@@ -2,7 +2,7 @@ package sample;
 
 import javafx.scene.control.Button;
 
-public class imageButton extends Button {
+public class ImageButton extends Button {
 
     private boolean isRecognizedByPlayer;
     private boolean isClicked;
@@ -32,7 +32,7 @@ public class imageButton extends Button {
         this.imageName = imageName;
     }
 
-    public imageButton(){
+    public ImageButton(){
         this.setClicked(false);
         this.setRecognizedByPlayer(false);
     }

@@ -14,14 +14,16 @@ Stage window;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        window = primaryStage;
-        model = new GameModel();
-        scene = new Scene(model.createContent(primaryStage));
-        window.setScene(scene);
-        window.setTitle("Memory Master");
-        window.show();
+        Parent root = (Parent) FXMLLoader.load(getClass().getResource("startPage.fxml"));
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Memory Master");
+        primaryStage.show();
 
     }
+
+
 
 
     public static void main(String[] args) {
