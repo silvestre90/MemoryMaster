@@ -1,4 +1,4 @@
-package sample;
+package game;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,22 +20,40 @@ public class GameModel {
 
     public static int numberOfClicks = 0;
     GameController gameController = new GameController();
-    private static final int X_GRID_SIZE = 3;
-    private static final int Y_GRID_SIZE = 4;
-    private static final int NUMBER_OF_PICTURES = (X_GRID_SIZE*Y_GRID_SIZE)/2;
-    private static int remainingFields = X_GRID_SIZE*Y_GRID_SIZE;
-
+    private static int X_GRID_SIZE;
+    private static int Y_GRID_SIZE;
+    private static int NUMBER_OF_PICTURES;
+    private static int remainingFields;
+    private String chosenLevel;
 
     Map<String,Integer> imageMap = new HashMap<>();
     private int globalCounter = 0;
 
-    public Parent createContent(Stage primaryStage) throws Exception {
+    private void setGridSize(){
+        if(chosenLevel.equals("EASY")){
+            X_GRID_SIZE = 2;
+            Y_GRID_SIZE =2;
 
+        }else if(chosenLevel.equals("MEDIUM")){
+            X_GRID_SIZE = 5;
+            Y_GRID_SIZE =6;
+        }else{
+            X_GRID_SIZE = 6;
+            Y_GRID_SIZE =6;
+        }
+
+        NUMBER_OF_PICTURES = (X_GRID_SIZE*Y_GRID_SIZE)/2;
+        remainingFields = X_GRID_SIZE*Y_GRID_SIZE;
+    }
+
+    public Parent createContent(Stage primaryStage, String chosenLevel) throws Exception {
+        this.chosenLevel = chosenLevel;
+        setGridSize();
         window = primaryStage;
         fillHashMap();
         root = new GridPane();
 
-        root.setPrefSize(620,620);
+        root.setPrefSize(97*X_GRID_SIZE,99*Y_GRID_SIZE);
         primaryStage.setTitle("Memory Master");
         primaryStage.setResizable(false);
         root.setVgap(8);
@@ -45,8 +63,8 @@ public class GameModel {
             for(int j = 0; j<Y_GRID_SIZE; j++) {
                 ImageButton button = new ImageButton();
 
-                button.setPrefHeight(100);
-                button.setPrefWidth(100);
+                button.setPrefHeight(95);
+                button.setPrefWidth(95);
 
 
                 button.setId(String.valueOf(i) + String.valueOf(j));

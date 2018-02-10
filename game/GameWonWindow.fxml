@@ -4,12 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="150.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.GameWonController">
+<AnchorPane prefHeight="150.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.GameWonController">
    <children>
       <Label fx:id="lblInfo" layoutX="24.0" layoutY="21.0" prefHeight="29.0" prefWidth="309.0" />
       <Button fx:id="btnRestart" layoutX="12.0" layoutY="95.0" mnemonicParsing="false" onAction="#restartGame" prefHeight="25.0" prefWidth="80.0" text="Play again" />
       <Button fx:id="btnTitle" layoutX="104.0" layoutY="95.0" mnemonicParsing="false" onAction="#backToTitle" prefHeight="25.0" prefWidth="80.0" text="Main Menu" />
-      <Button fx:id="btnSaveResult" layoutX="196.0" layoutY="95.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save Result" />
+      <Button fx:id="btnSaveResult" layoutX="196.0" layoutY="95.0" mnemonicParsing="false" onAction="#saveResults" prefHeight="25.0" prefWidth="80.0" text="Save Result" />
       <Button fx:id="btnExit" layoutX="288.0" layoutY="95.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="25.0" prefWidth="80.0" text="Exit" />
    </children>
 </AnchorPane>
