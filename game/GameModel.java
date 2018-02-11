@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,20 +20,22 @@ public class GameModel {
     Stage window;
 
     public static int numberOfClicks = 0;
+    public static int finalTime;
     GameController gameController = new GameController();
     private static int X_GRID_SIZE;
     private static int Y_GRID_SIZE;
     private static int NUMBER_OF_PICTURES;
     private static int remainingFields;
     private String chosenLevel;
+    public Date startTime, endTime;
 
     Map<String,Integer> imageMap = new HashMap<>();
     private int globalCounter = 0;
 
     private void setGridSize(){
         if(chosenLevel.equals("EASY")){
-            X_GRID_SIZE = 2;
-            Y_GRID_SIZE =2;
+            X_GRID_SIZE = 4;
+            Y_GRID_SIZE =4;
 
         }else if(chosenLevel.equals("MEDIUM")){
             X_GRID_SIZE = 5;
@@ -98,7 +101,7 @@ public class GameModel {
             }
         }
 
-
+        startTime = new Date();
         return root;
     }
 
@@ -118,7 +121,9 @@ public class GameModel {
 
                 window.close();
                 try {
-                    System.out.println("jestem tu");
+                    endTime = new Date();
+                    long diff = (endTime.getTime() - startTime.getTime())/1000;
+                    finalTime = (int)(diff);
                     Parent root;
                     root = (Parent) FXMLLoader.load(getClass().getResource("GameWonWindow.fxml"));
                     Stage gameWonWindow = new Stage();

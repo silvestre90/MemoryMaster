@@ -1,16 +1,21 @@
 package game;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ResultSaveController implements Initializable {
@@ -32,7 +37,7 @@ public class ResultSaveController implements Initializable {
     private String dbTableName = StartPageController.chosenLevel;
 
     @FXML
-    private void addNewResults(){
+    private void addNewResults() throws IOException {
 
 //        System.out.println("Text: " + this.txtName.getText().equals(""));
 
@@ -40,20 +45,29 @@ public class ResultSaveController implements Initializable {
             this.lblAlert.setText(ALERT_TEXT);
         }else {
             executeSQLInsert(this.txtName.getText());
+
+            Parent root = (Parent) FXMLLoader.load(getClass().getResource("StartPage.fxml"));
+
+            Scene scene = new Scene(root);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("Memory Master");
+            primaryStage.show();
         }
 
         Stage window = (Stage)this.btnOK.getScene().getWindow();
         window.close();
+
+
     }
 
     private void executeSQLInsert(String playerName){
         Statement stmt = null;
-
-        String sql = "INSERT INTO " + dbTableName + " VALUES ('" + playerName + "','" + String.valueOf(GameModel.numberOfClicks) + "')";
+        int finalResult = 2*GameModel.numberOfClicks + GameModel.finalTime;
+        String sql = "INSERT INTO " + dbTableName + " VALUES ('" + playerName + "','" + String.valueOf(finalResult) + "')";
         System.out.println(sql);
         try {
             this.connection = DBConnection.getConnection();
-            System.out.println("Great success!!!");
             stmt = connection.createStatement();
             stmt.executeUpdate(sql);
 
@@ -63,8 +77,14 @@ public class ResultSaveController implements Initializable {
     }
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.lblResult.setText(String.valueOf(GameModel.numberOfClicks));
+
+
+        this.lblResult.setText(String.valueOf(2*GameModel.numberOfClicks + GameModel.finalTime));
+
+
     }
 }

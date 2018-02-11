@@ -4,12 +4,12 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="429.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bestResultsController">
+<AnchorPane prefHeight="429.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="game.BestResultsController">
    <children>
       <Label layoutX="41.0" layoutY="62.0" prefHeight="17.0" prefWidth="49.0" text="Position" />
       <Label layoutX="106.0" layoutY="62.0" text="Name" />
       <Label layoutX="38.0" layoutY="28.0" prefHeight="17.0" prefWidth="92.0" text="Results on level:" />
-      <Label layoutX="161.0" layoutY="62.0" text="Time in seconds" />
+      <Label layoutX="161.0" layoutY="62.0" text="Points" />
       <Label layoutX="41.0" layoutY="89.0" text="1" />
       <Label layoutX="41.0" layoutY="115.0" text="2" />
       <Label layoutX="41.0" layoutY="141.0" text="3" />
@@ -40,7 +40,7 @@
       <Label fx:id="lblResult8" layoutX="190.0" layoutY="273.0" />
       <Label fx:id="lblResult9" layoutX="190.0" layoutY="297.0" />
       <Label fx:id="lblResult10" layoutX="190.0" layoutY="324.0" />
-      <Button fx:id="btnBackToTitle" layoutX="126.0" layoutY="369.0" mnemonicParsing="false" onAction="#BackToTitle" prefHeight="25.0" prefWidth="118.0" text="Go back to title" />
+      <Button fx:id="btnBackToTitle" layoutX="126.0" layoutY="369.0" mnemonicParsing="false" onAction="#goBackToTitle" prefHeight="25.0" prefWidth="118.0" text="Go back to title" />
       <Label fx:id="lblActualLevel" layoutX="138.0" layoutY="28.0" prefHeight="17.0" prefWidth="118.0" />
    </children>
 </AnchorPane>

@@ -94,6 +94,6 @@ public class GameWonController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        lblInfo.setText("Congratulations, you won with final result:" + GameModel.numberOfClicks);
+        lblInfo.setText("Congratulations, you won with final result:" + (2*GameModel.numberOfClicks + GameModel.finalTime));
     }
 }
